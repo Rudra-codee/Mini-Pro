@@ -46,10 +46,11 @@
         }
         #result{
             width: 50%;
-            height: 30px;
+            height: 50px;
             margin: 10px auto;
             padding: 10px;
             border: none;
+            font-size: 20px;
             border-radius: 10px;
             background-color: #333;
             color: #fff;
@@ -70,5 +71,41 @@
     <div class="result">
         <h2 id="result"></h2>
     </div>
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener("submit",function(e){
+            e.preventDefault();
+            let weight = parseInt(document.getElementById("weight").value);
+            let height = parseInt(document.getElementById("height").value);
+            let result = document.getElementById("result");
+
+            if((height === "" || height < 0 || isNaN(height))) {
+                result.innerHTML = `Invalid Height ${height}`;
+            }
+            else if(weight === "" || weight < 0 || isNaN(weight)){
+                result.innerHTML = `Invalid Weight ${weight}`;
+            }
+            else{
+               const bmi = Math.round( weight / ((height * height)/10000).toFixed(2));
+               if(bmi < 18.5){
+                result.style.color = "red";
+                result.innerHTML = `Your BMI is UnderWeight ${bmi}`;
+               }
+               else if(bmi >= 18.5 && bmi < 25){
+                result.style.color = "green";
+                result.innerHTML = `Your BMI is Normal ${bmi}`;
+               }
+               else if(bmi >= 25 && bmi < 30){
+                result.style.color = "orange";
+                result.innerHTML = `Your BMI is OverWeight ${bmi}`;
+               }
+               else{
+                result.style.color = "red";
+                result.innerHTML = `Your BMI is Obese ${bmi}`;
+               }
+
+            }
+        })
+    </script>
 </body>
 </html>
