@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+        h1{
+            text-align: center;
+        }
+        .colors{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+            margin-bottom: 250px;
+        }
+        .color{
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+        }
+        #red, #red1{
+            background-color: red;
+        }
+        #green, #green1{
+            background-color: green;
+        }
+        #blue, #blue1{
+            background-color: blue;
+        }
+        #orange, #orange1{
+            background-color: orange;
+        }
+        h2{
+            text-align: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Background Color Changer</h1>
+        <h2>OnClick</h2>
+        <div class="colors">
+            <div  class="color" id="red"></div>
+            <div class="color" id="green"></div>
+            <div class="color" id="blue"></div>
+            <div class="color" id="orange"></div>
+        </div>
+        <h2>OnHover</h2>
+        <div class="colors">
+            <div  class="color" id="red1"></div>
+            <div class="color" id="green1"></div>
+            <div class="color" id="blue1"></div>
+            <div class="color" id="orange1"></div>
+        </div>
+    </div>
+    <script>
+        const body = document.querySelector('body');
+        document.getElementById("red").addEventListener("click", function() {
+        body.style.backgroundColor = "red";
+        });
+        document.getElementById("green").addEventListener("click", function() {
+            body.style.backgroundColor = "green";
+        });
+        document.getElementById("blue").addEventListener("click", function() {
+            body.style.backgroundColor = "blue";
+        });
+        document.getElementById("orange").addEventListener("click", function() {
+            body.style.backgroundColor = "orange";
+        });
+        document.body.addEventListener("mouseenter", function() {
+        document.body.style.backgroundColor = "#212121";
+        });
+
+        document.getElementById("red1").addEventListener("mouseenter", function() {
+        body.style.backgroundColor = "red";
+        });
+        document.getElementById("green1").addEventListener("mouseenter", function() {
+            body.style.backgroundColor = "green";
+        });
+        document.getElementById("blue1").addEventListener("mouseenter", function() {
+            body.style.backgroundColor = "blue";
+        });
+        document.getElementById("orange1").addEventListener("mouseenter", function() {
+            body.style.backgroundColor = "orange";
+        });
+        document.body.addEventListener("mouseleave", function() {
+        document.body.style.backgroundColor = "#212121";
+        });
+    </script>
+</body>
+</html>
