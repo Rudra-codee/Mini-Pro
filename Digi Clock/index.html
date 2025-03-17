@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background: linear-gradient(2deg, #515BD4, #8134AF, #DD2A7B, #F58529);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .clock {
+            width: 50vw; 
+            height: 50vw; 
+            max-width: 200px; 
+            max-height: 200px; 
+            border: 10px solid #333;
+            border-radius: 50%;
+            position: relative;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        .kata {
+            position: absolute;
+            background: #333;
+            border-radius: 10px; 
+            transform-origin: bottom;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .ghanta {
+            width: 6px;
+            height: 50px;
+            background: #333;
+            z-index: 3;
+        }
+        .minute {
+            width: 4px;
+            height: 70px;
+            background: #666;
+            z-index: 2;
+        }
+        .second {
+            width: 2px;
+            height: 90px;
+            background: red;
+            z-index: 1;
+        }
+        .center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="kata ghanta" id="hour"></div>
+        <div class="kata minute" id="minute"></div>
+        <div class="kata second" id="second"></div>
+        <div class="center"></div>
+    </div>
+    <script>
+        function showTime() {
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+
+            let hourDeg = ((hours % 12) + minutes / 60) * 30; 
+            let minuteDeg = (minutes + seconds / 60) * 6; 
+            let secondDeg = seconds * 6; 
+
+            document.getElementById('hour').style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+            document.getElementById('minute').style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+            document.getElementById('second').style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+        }
+        setInterval(showTime, 1000);
+        showTime();
+    </script>
+</body>
+</html>
